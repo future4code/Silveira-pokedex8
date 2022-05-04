@@ -1,4 +1,5 @@
 import React from 'react';
+import GlobalState from './Context/GlobalState';
 import Rotas from './Routes/router';
 
 function App() {
@@ -6,7 +7,9 @@ function App() {
 
   return (
     <div>
-      <Rotas/>
+      <GlobalState>
+        <Rotas/>
+      </GlobalState>
     </div>
   );
 }

@@ -1,9 +1,11 @@
 import React from 'react'
 
-const BotaoAdicionar = () => {
+const BotaoAdicionar = (props) => {
   return (
-    <button>adicionar</button>
+    <button onClick={() => props.adicionarPokemon(props.pokemon)}>
+      adicionar
+    </button>
   )
 }
 
-export default BotaoAdicionar
+export default BotaoAdicionar;
