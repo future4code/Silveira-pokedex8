@@ -42,7 +42,7 @@ const useRequestData = (url) => {
                     console.log(error.response)
                 }
         })
-    }, [])
+    }, [lista])
 
     return [lista, pokemons, isLoading, error];
 };

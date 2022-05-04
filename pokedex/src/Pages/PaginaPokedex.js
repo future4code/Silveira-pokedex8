@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import BotaoVoltar from '../Components/Botoes/BotaoVoltar';
 import BotaoRemover from '../Components/Botoes/BotaoRemover'
 import BotaoDetalhes from '../Components/Botoes/BotaoDetalhes';
+import useRequestData from '../Hooks/useRequestData';
 import { useState } from 'react';
 
 const Header =styled.div`
@@ -34,27 +35,28 @@ const Card = styled.div`
 
 
 const PaginaPokedex = () => {
-    const [pokedex, setPokedex] = useState()
+    const [lista, pokemons, isLoading, error]= useRequestData(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=0`);
 
-    const listaPokemons = pokedex.map((poke)=>{
+
+    const listaPokemons = pokemons && pokemons.map((poke)=>{
         return (
-            <Card>
+            <Card key={poke.url}>
                 <p>{poke.name}</p>
                 <div>
-                    <BotaoRemover removerPokemon={()=>removerPokemon({poke})}/>
+                    <BotaoRemover removerPokemon={()=>removerPokemon(poke.url)}/>
                     <BotaoDetalhes url={poke.url} />
                 </div>
             </Card>
         )
     }) 
 
-    const removerPokemon = (url) => {
-        const novaPokedex = pokedex.filter((poke)=>{
+    const removerPokemon = (name) => {
+        const novaPokedex = listaPokemons.filter((poke)=>{
             return(
-                poke.url !== url
+                poke.name !== name
             )
         })
-        setPokedex(novaPokedex)
+
     }
 
     return(

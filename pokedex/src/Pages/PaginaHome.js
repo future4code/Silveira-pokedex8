@@ -33,26 +33,19 @@ const Card = styled.div`
     justify-content: space-between;
     text-align: center;
 `
-/*   <Card>
-                    <p>Pokemon</p>
-                    <div>
-                        <BotaoAdicionar/>
-                        <BotaoDetalhes/>
-                    </div>
-                </Card>*/
 
 const PaginaHome = () => {
     const [lista, pokemons, isLoading, error]= useRequestData(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=0`);
-
-    const cardPokemon = pokemons && pokemons.map((pokemon) => {
+    
+    const listaPokemons = pokemons && pokemons.map((pokemon) => {
         console.log(pokemon)
         return (
-            
             <Card key={pokemon.name}>
-                <p> {pokemon.height} </p>
+                <p>{pokemon.height}</p>
             </Card>
-        )
-    })
+            )
+        })
+    console.log(pokemons)
 
     return(
         <Div>
@@ -62,7 +55,7 @@ const PaginaHome = () => {
                 <p>.</p>
             </Header>
             <main>
-              {cardPokemon}
+              {listaPokemons}
             </main>
         </Div>
     )
