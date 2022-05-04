@@ -45,11 +45,13 @@ const PaginaHome = () => {
     const [lista, pokemons, isLoading, error]= useRequestData(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=0`);
 
     const cardPokemon = pokemons && pokemons.map((pokemon) => {
-        console.log(pokemon)
+        console.log("pokemons:", pokemon)
         return (
             
             <Card key={pokemon.name}>
+                <p> {pokemon.name} </p>
                 <p> {pokemon.height} </p>
+                <img src={pokemon.sprites.front_default}></img>
             </Card>
         )
     })
@@ -61,9 +63,9 @@ const PaginaHome = () => {
                 <h1>Lista de Pokémons</h1>
                 <p>.</p>
             </Header>
-            <main>
+            
               {cardPokemon}
-            </main>
+              
         </Div>
     )
 }

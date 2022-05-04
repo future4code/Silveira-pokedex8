@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route} from 'react-router-dom';
-import PaginaDetalhes from '../Pages/PaginaDetalhes';
+import { PaginaDetalhes } from '../Pages/PaginaDetalhes';
 import PaginaHome from '../Pages/PaginaHome';
 import PaginaPokedex from '../Pages/PaginaPokedex';
 
