@@ -1,8 +1,8 @@
 import React from 'react'
 
-const BotaoRemover = () => {
+const BotaoRemover = (props) => {
   return (
-    <button>Remover</button>
+    <button onClick={props.removerPokemon}>Remover</button>
   )
 }
 

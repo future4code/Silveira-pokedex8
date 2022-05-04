@@ -11,7 +11,7 @@ const Rotas = () => {
             <Routes>
                 <Route index element={<PaginaHome />} />
                 <Route path="pokedex" element={<PaginaPokedex />} />
-                <Route path="detalhes" element={<PaginaDetalhes />} /> 
+                <Route path="detalhes/:id" element={<PaginaDetalhes />} /> 
             </Routes>
         </BrowserRouter>
     )
