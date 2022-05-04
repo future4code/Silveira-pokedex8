@@ -3,6 +3,8 @@ import styled from 'styled-components'
 import BotaoIrParaPokedex from '../Components/Botoes/BotaoIrParaPokedex';
 import BotaoAdicionar from '../Components/Botoes/BotaoAdicionar';
 import BotaoDetalhes from '../Components/Botoes/BotaoDetalhes';
+import useRequestData from '../Hooks/useRequestData';
+
 
 const Header =styled.div`
     display: flex;
@@ -31,9 +33,26 @@ const Card = styled.div`
     justify-content: space-between;
     text-align: center;
 `
-
+/*   <Card>
+                    <p>Pokemon</p>
+                    <div>
+                        <BotaoAdicionar/>
+                        <BotaoDetalhes/>
+                    </div>
+                </Card>*/
 
 const PaginaHome = () => {
+    const [lista, pokemons, isLoading, error]= useRequestData(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=0`);
+
+    const cardPokemon = pokemons && pokemons.map((pokemon) => {
+        console.log(pokemon)
+        return (
+            
+            <Card key={pokemon.name}>
+                <p> {pokemon.height} </p>
+            </Card>
+        )
+    })
 
     return(
         <Div>
@@ -43,13 +62,7 @@ const PaginaHome = () => {
                 <p>.</p>
             </Header>
             <main>
-                <Card>
-                    <p>Pokemon</p>
-                    <div>
-                        <BotaoAdicionar/>
-                        <BotaoDetalhes/>
-                    </div>
-                </Card>
+              {cardPokemon}
             </main>
         </Div>
     )
