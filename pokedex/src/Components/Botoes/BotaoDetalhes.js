@@ -1,8 +1,15 @@
-import React from 'react'
+import React  from 'react'
+import { useNavigate } from 'react-router-dom'
 
-const BotaoDetalhes = () => {
+const BotaoDetalhes = (props) => {
+  const navigate = useNavigate()
+
+  const irParaDetalhes = (url)=>{
+    navigate(`/detalhes/${url}`)
+  }
+
   return (
-    <button>Ver Detalhes</button>
+    <button onClick={()=>irParaDetalhes(props.url)}>Detalhes</button>
   )
 }
 

@@ -1,8 +1,14 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const BotaoIrParaPokedex = () => {
+  const navigate = useNavigate()
+
+  const irParaPokedex = () =>{
+    navigate("/pokedex")
+  }
   return (
-    <button>Ver minha Pokedéx</button>
+    <button onClick={irParaPokedex}>Ver minha Pokedéx</button>
   )
 }
 
