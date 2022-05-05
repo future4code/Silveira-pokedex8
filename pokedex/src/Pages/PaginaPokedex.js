@@ -4,6 +4,7 @@ import BotaoVoltar from '../Components/Botoes/BotaoVoltar';
 import BotaoRemover from '../Components/Botoes/BotaoRemover'
 import BotaoDetalhes from '../Components/Botoes/BotaoDetalhes';
 import { useState } from 'react';
+import CardPokedex from '../Components/Cards/CardPokedex';
 
 const Header =styled.div`
     display: flex;
@@ -34,28 +35,6 @@ const Card = styled.div`
 
 
 const PaginaPokedex = () => {
-    const [pokedex, setPokedex] = useState()
-
-    const listaPokemons = pokedex.map((poke)=>{
-        return (
-            <Card>
-                <p>{poke.name}</p>
-                <div>
-                    <BotaoRemover removerPokemon={()=>removerPokemon({poke})}/>
-                    <BotaoDetalhes url={poke.url} />
-                </div>
-            </Card>
-        )
-    }) 
-
-    const removerPokemon = (url) => {
-        const novaPokedex = pokedex.filter((poke)=>{
-            return(
-                poke.url !== url
-            )
-        })
-        setPokedex(novaPokedex)
-    }
 
     return(
         <Div>
@@ -65,7 +44,7 @@ const PaginaPokedex = () => {
                 <p>.</p>
             </Header>
             <main>
-                {listaPokemons}
+                <CardPokedex/>
             </main>
         </Div>
     )
