@@ -36,6 +36,9 @@ const CardPokemons = () => {
     if (index === -1) {
       const novaPokedex = [...states.pokedex, pokemon];
       setters.setPokedex(novaPokedex);
+      //logica para sumir com o card depois que ele é adicionado na pokedex
+      document.getElementById(pokemon.name).style.display = 'none';
+      alert("to na pokedex!!!")
     }
   };
 
@@ -44,7 +47,7 @@ const CardPokemons = () => {
       {states.pokemons &&
           states.pokemons.map((pokemon) => {
             return (
-              <Card key={pokemon.name}>
+              <Card id={pokemon.name} key={pokemon.name}>
                 <p> {pokemon.name} </p>
                 <FotoPoke
                   src={pokemon.sprites.other.dream_world.front_default}
@@ -56,7 +59,7 @@ const CardPokemons = () => {
                     adicionarPokemon={adicionarPokemon}
                     pokemon={pokemon}
                   />
-                  <BotaoDetalhes />
+                  <BotaoDetalhes url={pokemon.name} />
                 </div>
               </Card>
             );
