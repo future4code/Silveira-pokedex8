@@ -3,7 +3,7 @@ import React from 'react'
 const BotaoAdicionar = (props) => {
   return (
     <button onClick={() => props.adicionarPokemon(props.pokemon)}>
-      adicionar
+      {props.nome}
     </button>
   )
 }
