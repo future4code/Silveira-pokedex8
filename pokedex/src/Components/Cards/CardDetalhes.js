@@ -7,6 +7,16 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import GlobalStateContext from "../../Context/GlobalStateContext";
 import { useContext } from "react";
+import { Card } from '@material-ui/core';
+import { CardMedia } from '@material-ui/core';
+import { CardContent } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
+
+const Div = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+`
 
 const Header = styled.header`
   display: flex;
@@ -23,30 +33,6 @@ const Main = styled.div`
   justify-content: space-evenly;
 `;
 
-const Imagem = styled.img`
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  width: 200px;
-  height: 200px;
-  margin: 10px;
-  border: 1px solid black;
-`;
-
-const Status = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  text-align: center;
-  align-items: center;
-
-  width: 400px;
-  height: 412px;
-  border: 1px solid black;
-  margin: 10px;
-`;
-
 const Type = styled.div`
   display: flex;
   justify-content: space-around;
@@ -58,30 +44,10 @@ const Type = styled.div`
   margin: 10px;
 `;
 
-const Moves = styled.div`
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  width: 400px;
-  height: 300px;
-  border: 1px solid black;
-  margin: 10px;
-`;
-
 const Paragrafo = styled.p`
   margin: 7px;
   font-family: cursive;
   font-size: 20px;
-`;
-
-const Stats = styled.div`
-  text-align: initial;
-`;
-
-const StatsH1 = styled.h1`
-  margin-top: 0;
 `;
 
 const CardDetalhes = () => {
@@ -105,11 +71,9 @@ const CardDetalhes = () => {
     pokemon &&
     pokemon.stats?.map((s) => {
       return (
-        <div key={s.id}>
-          <Paragrafo>
-            {s.stat.name}: {s.base_stat}
-          </Paragrafo>
-        </div>
+        <Typography key={s.id} variant="body2" color="text.secondary">
+          <Paragrafo>{s.stat.name}: {s.base_stat}</Paragrafo>
+        </Typography>
       );
     });
 
@@ -117,9 +81,9 @@ const CardDetalhes = () => {
     pokemon &&
     pokemon.types?.map((tipos) => {
       return (
-        <div key={tipos.id}>
+        <Typography key={tipos.id} variant="body2" color="text.secondary">
           <Paragrafo>{tipos.type.name}</Paragrafo>
-        </div>
+        </Typography>
       );
     });
 
@@ -127,9 +91,9 @@ const CardDetalhes = () => {
     pokemon &&
     pokemon.moves?.slice(0, 5).map((move) => {
       return (
-        <div key={move.id}>
+        <Typography key={move.id} variant="body2" color="text.secondary">
           <Paragrafo>{move.move.name}</Paragrafo>
-        </div>
+        </Typography>
       );
     });
 
@@ -151,7 +115,7 @@ const CardDetalhes = () => {
   };
 
   return (
-    <div>
+    <Div>
       <Header>
         <BotaoVoltar />
         <h1>{pokemon.name}</h1>
@@ -163,25 +127,54 @@ const CardDetalhes = () => {
       </Header>
       <Main>
         <div>
-          <Imagem src={pokemon.sprites?.front_default} alt="frente"></Imagem>
-          <Imagem src={pokemon.sprites?.back_default} alt="verso"></Imagem>
+          <Card style={{ maxWidth: 200, marginBottom: 13, marginTop: 10, background: ' #BCF2CB' }}>
+            <CardMedia
+              component="img"
+              height="200"
+              image={pokemon.sprites?.front_default}
+              alt="frente"
+            />
+          </Card>
+          <Card style={{ maxWidth: 200, background: ' #BCF2CB' }}>
+            <CardMedia
+              component="img"
+              height="200"
+              image={pokemon.sprites?.back_default}
+              alt="verso"
+            />
+          </Card>
         </div>
-        <Status>
-          <StatsH1>Stats</StatsH1>
-          <Stats>{pokemonStats}</Stats>
-        </Status>
-        <div>
-          <Type>
-            <h2>Type</h2>
-            <div>{pokemonTypes}</div>
-          </Type>
-          <Moves>
-            <h2>Principais ataques</h2>
-            {pokemonMoves}
-          </Moves>
+        <div style={{marginLeft: 10}}>
+          <Card style={{ width: 400, height: 413, marginBottom: 13, marginTop: 10, background: ' #BCF2CB' }}>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div" style={{ textAlign: 'center', marginTop: 20, marginBottom: 40, fontSize: 30, color: 'darkblue' }}>
+                Stats
+              </Typography>
+              {pokemonStats}
+            </CardContent>
+          </Card>
+        </div>
+        <div style={{marginLeft: 10}}>
+        <Card style={{ width: 420, height: 100, marginBottom: 13, marginTop: 10, background: ' #BCF2CB' }}>
+            <CardContent style={{ display: 'flex', justifyContent: 'space-around' }}>
+              <Typography gutterBottom variant="h5" component="div" style={{ display: 'flex', textAlign: 'center', alignItems: 'center', margin: 0, color: 'darkblue'}}>
+                Type
+              </Typography>
+              {pokemonTypes}
+            </CardContent>
+          </Card>
+        
+          <Card style={{ width: 420, height: 300, marginBottom: 13, marginTop: 10, background: ' #BCF2CB' }}>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div" style={{ textAlign: 'center', marginTop: 10, marginBottom: 20, fontSize: 25, color: 'darkblue' }}>
+                Principais ataques
+              </Typography>
+              {pokemonMoves}
+            </CardContent>
+          </Card>
         </div>
       </Main>
-    </div>
+    </Div>
   );
 };
 
