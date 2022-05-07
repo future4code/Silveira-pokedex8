@@ -9,7 +9,7 @@ Link do Surge: www.link.com.br
 
 O que funciona:
 - Visualização dos pokémons;
-- - Visualização da pokedéx;
+- Visualização da pokedéx;
 - Funcionalidade adicionar à pokédex;
 - Funcionalidade remover da pokédex;
 - Acesso aos detalhes de cada pokémon.
