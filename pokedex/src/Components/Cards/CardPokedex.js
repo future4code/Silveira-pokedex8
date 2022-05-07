@@ -53,7 +53,7 @@ const CardPokedex = () => {
                     removerPokemon={removerPokemon}
                     name={pokemon.name}
                   />
-                  <BotaoDetalhes />
+                  <BotaoDetalhes url={pokemon.name}/>
                 </div>
               </Card>
             );
