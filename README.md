@@ -1,4 +1,4 @@
-# POKEDEX
+![pokemon-logo-em-png-queroimagem-ceiça-crispim-01](https://user-images.githubusercontent.com/93545669/167256406-7aec90aa-bdce-497a-9c60-2d3645095a8f.png)
 
 Nome dos integrantes: 
 - Brenno Ambrozino
@@ -8,9 +8,7 @@ Nome dos integrantes:
 Link do Surge: www.link.com.br
 
 O que funciona:
-- Item 1
-- Item 2
-
-O que não funciona: 
-- Item 3
-- Item 4
+- Visualização dos pokémons;
+- Funcionalidade adicionar à pokédex;
+- Funcionalidade remover da pokédex;
+- Acesso aos detalhes de cada pokémon.
