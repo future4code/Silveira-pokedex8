@@ -12,4 +12,5 @@ O que funciona:
 - Visualização da pokedéx;
 - Funcionalidade adicionar à pokédex;
 - Funcionalidade remover da pokédex;
-- Acesso aos detalhes de cada pokémon.
+- Acesso aos detalhes de cada pokémon;
+- Responsividade para Iphone SE.
