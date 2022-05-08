@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import pokeFundo from '../../Assets/pokeFundo.jpg'
 import { useContext } from 'react'
 import GlobalStateContext from '../../Context/GlobalStateContext'
 import BotaoAdicionar from '../Botoes/BotaoAdicionar'
@@ -104,7 +103,7 @@ const Card = styled.div`
   }
   `
   const FundoPoke = styled.div` 
-  background-image: url(${pokeFundo});
+  background-color: rgba(255, 203, 5, 0.4);
   background-size: cover;
   background-repeat: no-repeat;
   display: flex;
