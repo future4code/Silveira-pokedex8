@@ -1,4 +1,5 @@
 import React from 'react'
+import pokebolaBotao from '../../Assets/pokebolaBotao.png'
 
 const BotaoAdicionar = (props) => {
   return (
