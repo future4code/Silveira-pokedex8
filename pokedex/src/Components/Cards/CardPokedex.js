@@ -24,6 +24,8 @@ const FotoPoke = styled.img`
 `
 
 const CardPokedex = () => {
+
+  
     const { states, setters } = useContext(GlobalStateContext);
 
 
