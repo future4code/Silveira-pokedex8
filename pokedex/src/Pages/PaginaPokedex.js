@@ -1,10 +1,7 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import BotaoVoltar from '../Components/Botoes/BotaoVoltar';
-import BotaoRemover from '../Components/Botoes/BotaoRemover'
-import BotaoDetalhes from '../Components/Botoes/BotaoDetalhes';
-import { useState } from 'react';
-import CardPokedex from '../Components/Cards/CardPokedex';
+import Pokedex from '../Components/Pokedex/Pokedex';
 
 const Header =styled.div`
     display: flex;
@@ -21,16 +18,16 @@ const Div = styled.div`
     flex-direction: column;
     margin: auto;
 `
-const Card = styled.div`
+
+
+const Main = styled.div`
+    margin: 30px;
     display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-    width:300px;
-    height: 350px;
-    margin: 10px;
-    padding: 10px;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+
+
 `
 
 
@@ -43,9 +40,9 @@ const PaginaPokedex = () => {
                 <h1>Pokedéx</h1>
                 <p>.</p>
             </Header>
-            <main>
-                <CardPokedex/>
-            </main>
+            <Main>
+                <Pokedex/>
+            </Main>
         </Div>
     )
 }
