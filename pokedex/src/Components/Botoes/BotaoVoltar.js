@@ -1,6 +1,24 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
-import Button from '@material-ui/core/Button';
+import styled from 'styled-components'
+
+const Button =  styled.button`
+  border: none;
+  border-radius: 8px; 
+  background-color: rgb(255, 203, 5);
+  color: rgb(7, 107, 177);
+  margin-left: 30px;
+  font-size: 16px;
+  font-family: 'Fredoka One', cursive;
+  padding: 10px;
+  cursor: pointer;
+
+  @media(max-width: 670px) {
+    margin: 10px 0 0 0;
+    align-self: flex-start;
+  }
+
+` 
 
 const BotaoVoltar = () => {
   const navigate = useNavigate()
@@ -9,7 +27,7 @@ const BotaoVoltar = () => {
     navigate(-1)
   }
   return (
-    <Button variant="contained" color="secondary" onClick={ () => goBack() }>Voltar</Button>
+    <Button onClick={ () => goBack() }>Voltar</Button>
   )
 }
 

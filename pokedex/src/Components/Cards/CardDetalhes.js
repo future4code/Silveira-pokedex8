@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import BotaoVoltar from "../Botoes/BotaoVoltar";
-import BotaoAdicionar from "../Botoes/BotaoAdicionar";
+import BotaoAddRemover from "../Botoes/BotaoAddRemover";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
@@ -11,37 +11,47 @@ import { Card } from '@material-ui/core';
 import { CardMedia } from '@material-ui/core';
 import { CardContent } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
+import { shadows } from '@material-ui/system';
+
+const Header = styled.div`
+    display: flex;
+    height: 100px;
+    padding: 10px;
+    align-items: center;
+    background-color: rgb(10 40 95);
+    justify-content: space-between;
+
+    img{
+      max-width: 100%;
+      max-height: 100%;
+      margin-right: 30px;
+
+      @media(max-width: 670px) {
+      margin: 35px 0 0 0;
+      padding: 15px;
+}
+    }
+
+    @media(max-width: 670px) {
+      flex-direction: column-reverse;
+      justify-content: center;
+    }
+`
 
 const Div = styled.div`
     display: flex;
     flex-direction: column;
-    margin: auto;
+    margin: 0;
 `
-
-const Header = styled.header`
-  display: flex;
-  height: 100px;
-  padding: 10px;
-  margin-bottom: 10px;
-  align-items: center;
-  border: solid 1px black;
-  justify-content: space-between;
-`;
 
 const Main = styled.div`
   display: flex;
   justify-content: space-evenly;
-`;
+  margin: 30px 100px;
 
-const Type = styled.div`
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
-  align-items: center;
-  width: 400px;
-  height: 100px;
-  border: 1px solid black;
-  margin: 10px;
+  @media(max-width: 1300px) {
+    margin: 30px 0px;
+  }
 `;
 
 const Paragrafo = styled.p`
@@ -49,6 +59,11 @@ const Paragrafo = styled.p`
   font-family: cursive;
   font-size: 20px;
 `;
+
+const NomePoke = styled.h1 `
+  color: rgb(255, 203, 5);
+  text-transform: capitalize;
+`
 
 const CardDetalhes = () => {
   const { states, setters } = useContext(GlobalStateContext);
@@ -104,13 +119,13 @@ const CardDetalhes = () => {
     if (index === -1) {
       const novaPokedex = [...states.pokedex, pokemon];
       setters.setPokedex(novaPokedex);
-      alert("to na pokedex!!!");
+      alert(`${pokemon.name} capturado com sucesso!`);
     } else {
       const novaPokedex = states.pokedex.filter((poke) => {
         return poke.name !== pokemon.name;
       });
       setters.setPokedex(novaPokedex);
-      alert("to na home!!!");
+      alert(`${pokemon.name} deletado da pokedex com sucesso!`);
     }
   };
 
@@ -118,16 +133,16 @@ const CardDetalhes = () => {
     <Div>
       <Header>
         <BotaoVoltar />
-        <h1>{pokemon.name}</h1>
-        <BotaoAdicionar
+        <NomePoke>{pokemon.name}</NomePoke>
+        <BotaoAddRemover
           adicionarPokemon={addRemovePokemon}
           pokemon={pokemon}
-          nome={"Adicionar/Remover da Pokedex"}
+          nome={"Adicionar/Remover"}
         />
       </Header>
       <Main>
         <div>
-          <Card style={{ maxWidth: 200, marginBottom: 13, marginTop: 10, background: ' #BCF2CB' }}>
+          <Card style={{ maxWidth: 200, marginBottom: 13, marginTop: 10, background: 'rgba(229, 216, 76, 0.42)' }}>
             <CardMedia
               component="img"
               height="200"
@@ -135,7 +150,7 @@ const CardDetalhes = () => {
               alt="frente"
             />
           </Card>
-          <Card style={{ maxWidth: 200, background: ' #BCF2CB' }}>
+          <Card style={{ maxWidth: 200, background: 'rgba(229, 216, 76, 0.42)' }}>
             <CardMedia
               component="img"
               height="200"
@@ -144,8 +159,8 @@ const CardDetalhes = () => {
             />
           </Card>
         </div>
-        <div style={{marginLeft: 10}}>
-          <Card style={{ width: 400, height: 413, marginBottom: 13, marginTop: 10, background: ' #BCF2CB' }}>
+        <div style={{ marginLeft: 10 }}>
+          <Card style={{ width: 350, height: 413, marginBottom: 13, marginTop: 10, background: 'rgba(229, 216, 76, 0.42)' }}>
             <CardContent>
               <Typography gutterBottom variant="h5" component="div" style={{ textAlign: 'center', marginTop: 20, marginBottom: 40, fontSize: 30, color: 'darkblue' }}>
                 Stats
@@ -154,17 +169,17 @@ const CardDetalhes = () => {
             </CardContent>
           </Card>
         </div>
-        <div style={{marginLeft: 10}}>
-        <Card style={{ width: 420, height: 100, marginBottom: 13, marginTop: 10, background: ' #BCF2CB' }}>
+        <div style={{ marginLeft: 10 }}>
+          <Card style={{ width: 370, height: 100, marginBottom: 13, marginTop: 10, background: 'rgba(229, 216, 76, 0.42)' }}>
             <CardContent style={{ display: 'flex', justifyContent: 'space-around' }}>
-              <Typography gutterBottom variant="h5" component="div" style={{ display: 'flex', textAlign: 'center', alignItems: 'center', margin: 0, color: 'darkblue'}}>
+              <Typography gutterBottom variant="h5" component="div" style={{ display: 'flex', textAlign: 'center', alignItems: 'center', margin: 0, color: 'darkblue' }}>
                 Type
               </Typography>
               {pokemonTypes}
             </CardContent>
           </Card>
-        
-          <Card style={{ width: 420, height: 300, marginBottom: 13, marginTop: 10, background: ' #BCF2CB' }}>
+
+          <Card style={{ width: 370, height: 300, marginBottom: 13, marginTop: 10, background: 'rgba(229, 216, 76, 0.42)' }}>
             <CardContent>
               <Typography gutterBottom variant="h5" component="div" style={{ textAlign: 'center', marginTop: 10, marginBottom: 20, fontSize: 25, color: 'darkblue' }}>
                 Principais ataques
