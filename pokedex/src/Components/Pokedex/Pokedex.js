@@ -5,16 +5,20 @@ import GlobalStateContext from '../../Context/GlobalStateContext'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
+
 const Pokedex = () => {
 
   const { states, setters } = useContext(GlobalStateContext);
   const [numeroArray, setNumeroArray] = useState(0)
 
   const avançar = () => {
-    setNumeroArray( numeroArray + 1 )
+    if(numeroArray !== states.pokedex.length - 1){
+      setNumeroArray( numeroArray + 1 )
+    }
   }
 
   const voltar = () => {
+    if(numeroArray > 0)
     setNumeroArray ( numeroArray - 1 )
   }
 
@@ -33,6 +37,8 @@ const Pokedex = () => {
       })
       setters.setPokedex(novaPokedex)
   }
+
+  
 
   console.log(states.pokedex[numeroArray])
 
@@ -72,7 +78,7 @@ const Pokedex = () => {
               <div className="sp"></div>
             </div>
           </div>
-          <button id="bigbluebutton" onClick={()=>irParaDetalhes(states.pokedex[numeroArray].name)}><p>Detalhes</p></button>
+          <button id="bigbluebutton" onClick={()=>irParaDetalhes(states.pokedex[numeroArray].name)}><h5>Detalhes</h5></button>
           <div id="barbutton1"></div>
           <div id="barbutton2"></div>
           <div id="cross">
