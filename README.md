@@ -5,7 +5,7 @@ Nome dos integrantes:
 - Graziela Queiroz
 - Maria Eduarda Pacheco
 
-Link do Surge: www.link.com.br
+Link do Surge: rambunctious-parcel.surge.sh
 
 O que funciona:
 - Visualização dos pokémons;
